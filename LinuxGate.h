@@ -10,6 +10,7 @@
 #include "Proton.h"
 #include "Wine.h"
 #include "tgpt.h"
+#include "CommandsSheet.h"
 
 using namespace std;
 
@@ -21,6 +22,8 @@ class Linux : private tgpt
     string Command ; 
     string subcommand, Param , end; 
     int Result;
+
+    
     
     
   
@@ -64,6 +67,10 @@ class Linux : private tgpt
     Flathub flat;
     Wine WINE;
     Proton PROTON;
+
+
+
+
     void LinuxGate()
     {
         do
@@ -226,7 +233,7 @@ class Linux : private tgpt
             //!class Process Management
 
 
-            else if (this->Command == "what happening")
+            else if (this->Command == "what is happening")
             {
                 ps.ShowProcesses();
             }
@@ -408,13 +415,19 @@ class Linux : private tgpt
                 this->Command = "gnome-termainal -- nano " + this->subcommand;
                 system(this->Command.c_str());
             }
-
+ //! class tgpt
             else if (this->Command == "remove ai")
             {
                 RemoveTGPT();
             }
 
-            //! class tgpt
+            //! class Commands sheet
+            else if (this->Command == "commands")
+            {
+                Values();
+            }
+
+           
             else
             {
 
@@ -443,41 +456,6 @@ class Linux : private tgpt
                 
 
 
-
-       /* 
-                
-              this->Result =  system(this->Command.c_str());
-                if (this->Result != 0)
-                {
-                    char answer;
-                    string  caption = "tgpt \"give me a answer only without anything I do not need it, Or if my command incorrect, so send to me the correct command only, ";
-                    cout<<"Do you whan ask AI (y/n) ? \n";
-                    cin>>answer;
-                    if (answer == 'y')
-                    {   string COMMAND;
-                        COMMAND = caption + this->Command + "\"";
-                        this->Result  =  system(COMMAND.c_str());
-
-                        if (this->Result != 0)
-                        {
-                            this->subcommand = "git clone https://github.com/aandrew-me/tgpt.git";
-                            this->Result = system(this->subcommand.c_str());
-                            if (this->Result != 0)
-                            {
-                                system("sudo apt install git");
-                                system(this->subcommand.c_str());
-                            }
-                            else
-                            {
-                                cerr<<"Check your internet connection type \"connect\" to connect to a network \nOr connect with Haider Bassem to solve this problem !";
-                            }
-                        }
-
-                    }
-
-
-                }
- */
 
             }
 
