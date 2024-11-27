@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
+
 
 using namespace std;
 
 class tgpt
 {
     private:
+    
     string Command, subcommand , COMMAND;
     int Result , result;
 
@@ -14,6 +15,7 @@ class tgpt
 
     int cloneTGPT()
     {
+        //! You can change the path... and remember you can not use tgpt if you do not store this file in this path, for a first time only..
         this->Result = system("cd ~/CommandsLine && git clone https://github.com/aandrew-me/tgpt.git");
         if (this->Result != 0)
         {
@@ -35,16 +37,25 @@ class tgpt
         }
     }  
 
+
+//! git from apt
     int installGIT()
     {
         this->Result = system("sudo apt install git");
         return this->Result;
     }
+
+    //! intall terminal tgpt and give him excute permision..
+
+
     int installTGPT()
     {
            this->Result = system("cd ~/CommandsLine/tgpt && chmod +x ./install && ./install");
            return this->Result;
     }
+
+
+//! All functions above I used them here ..
 
     void runTGPTsteps()
     {
@@ -69,6 +80,8 @@ class tgpt
         }
     }
 
+//! for remove terminal gpt
+
     void RemoveTGPT()
     {
         system("sudo rm /usr/local/bin/tgpt");
@@ -82,7 +95,7 @@ class tgpt
         return this->Result;
     }
       
-};  
+};
 
 /* 
 this->Result =  system(this->Command.c_str());
