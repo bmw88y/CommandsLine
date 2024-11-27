@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <cstdlib>
+
 
 using namespace std;
 
@@ -31,7 +31,7 @@ void InstallApp()
         }
         else
         {
-            cout << appName << " installed successfully.\n";
+            cout << appName << " installed successfully (-: \n";
         }
         }
         return;
@@ -54,7 +54,7 @@ void RemoveApp()
         }
         else
         {
-            cout << appName << " removed successfully.\n";
+            cout << appName << " removed successfully (-; \n";
         }
         }
         return;
@@ -64,7 +64,7 @@ void RemoveApp()
 void SearchApp()
     {
 
-        cout << "Enter the app name to search: ";
+        cout << "Enter the app name to search: -><-";
         cin >> this->appName;
 
         if (this->appName != "end")
@@ -75,7 +75,7 @@ void SearchApp()
 
         if (this->Result != 0)
         {
-            cerr << "Failed to search for " << appName << ".\n";
+            cerr << "Failed to search for " << appName << ")-\"\n";
         }
         }
         return;
