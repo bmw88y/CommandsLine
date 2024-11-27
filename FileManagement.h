@@ -1,14 +1,11 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <cstdlib>
-#include <limits>
 #include <sys/stat.h> // chmod
 #include <unistd.h>   // chown
-#include <limits.h>
-#include <cstring>      // For strerror
-#include <cerrno>       // For errno
-
+#include <limits.h> // for get the current path...
+   
+     
 using namespace std;
 
 
@@ -197,7 +194,7 @@ void ChangeFilePermissionsManually()
        // system(A.c_str());
        //cout<<"You are running as root now!";
        cout<<"File path : ";
-       cin>>this->filePath;
+       getline(cin , this->filePath);
        ShowFilePermissions(this->filePath);
 
   int newPermissions = NemPermissons();
@@ -426,12 +423,13 @@ void UncompressTAR()
     }
 }
 
+//! I got this function form AI
 string getCurrentWorkingDirectory() 
 {
     char cwd[PATH_MAX]; // Array to store the path   /* #define PATH_MAX        4096	/* # chars in a path name including nul  */
     if (getcwd(cwd, sizeof(cwd)) != nullptr) 
     {
-        return string(cwd); // Convert to string and return it
+        return string(cwd);
     } else 
     {
         return "Error getting current path";
@@ -444,7 +442,7 @@ string getCurrentWorkingDirectory()
        {
            if (chdir(destination.c_str()) != 0) 
            {
-               cerr << "Failed to change directory to '" << destination << "': " << strerror(errno) << ".\n";
+               cerr << "Failed to change directory to '" << destination << ".\n";
                return;
            }
 
