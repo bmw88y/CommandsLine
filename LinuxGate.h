@@ -329,7 +329,7 @@ class Linux : private tgpt
                 {
                     cout<<"1-install or 2-remove or 3-search 4-IDsApps 5-update 6-list apps or Type \"end\" for exti\n";
                     cout<<"LinuxGate:~$"<<file.getCurrentWorkingDirectory()<<"$ ";
-                    cin>>flatcommand;
+                    getline(cin , flatcommand);
                     if (flatcommand == "install" || flatcommand == "1")
                     {
                         flat.InstallApp();
@@ -364,6 +364,7 @@ class Linux : private tgpt
                         cerr<<"or no, Type \"end\"\n";
                    
                     }
+                    
                 }while (flatcommand != "end");
             }
 
@@ -463,6 +464,7 @@ class Linux : private tgpt
            
             else
             {
+                
 
                 this->Result = system(this->Command.c_str());
 
