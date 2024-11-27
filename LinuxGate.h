@@ -230,6 +230,7 @@ class Linux : private tgpt
             }
 
 
+
             //!class Process Management
 
 
@@ -237,6 +238,7 @@ class Linux : private tgpt
             {
                 ps.ShowProcesses();
             }
+
 
             //! Class Network
 
@@ -269,6 +271,7 @@ class Linux : private tgpt
                 net.ShowMyNetwork();
             }
 
+
             //! Class WDownload
 
             else if (this->Command == "down")
@@ -277,6 +280,7 @@ class Linux : private tgpt
                 cin>>this->Param;
                 DownloadFileWgetORCurl(Param);
             }
+
 
             //! Class apt
             else if (this->Command == "apt")
@@ -312,6 +316,7 @@ class Linux : private tgpt
                 }while (aptcommand != "end");
                
             }
+
 
 
             //! Class Flathub
@@ -410,10 +415,29 @@ class Linux : private tgpt
             {
                 cout<<"Any file ? :";
                 system("ls");
-                
+                char karrar;
                 getline(cin , this->subcommand);
+                string color = "clear && echo -e \"\e[41m\"";
+                cout<<"\nAre you Karrar Haithem (y/n)?";
+                cin>>karrar;
+                system("echo -e \"\e[0m\"");
+
+                if (karrar == 'y')
+                {
+                    this->Command = "gnome-terminal -- nvim " + this-> subcommand;
+                    system(this->Command.c_str());
+                }
+                else
+                {
+                    this->Command = "gnome-terminal -- nano " + this-> subcommand;
+                    system(this->Command.c_str());
+                }
+                    
+
+                
+               /*  getline(cin , this->subcommand);
                 this->Command = "gnome-terminal -- nano " + this->subcommand;
-                system(this->Command.c_str());
+                system(this->Command.c_str()); */
             }
  //! class tgpt
             else if (this->Command == "remove ai")
@@ -421,10 +445,19 @@ class Linux : private tgpt
                 RemoveTGPT();
             }
 
+
             //! class Commands sheet
             else if (this->Command == "commands")
             {
                 Values();
+            }
+
+
+            //! learn c++
+
+            else if (this->Command == "i want to learn c++")
+            {
+                system("xdg-open https://www.youtube.com/@CodeSimulation");
             }
 
            
@@ -464,5 +497,6 @@ class Linux : private tgpt
         } while (this->Command != "end");
         
     }
+
 };
 
