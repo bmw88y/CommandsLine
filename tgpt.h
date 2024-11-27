@@ -100,7 +100,7 @@ class tgpt
 /* 
 this->Result =  system(this->Command.c_str());
                 if (this->Result != 0)
-                {
+                {/
                     char answer;
                     string  caption = "tgpt \"give me a answer only without anything I do not need it, Or if my command incorrect, so send to me the correct command only, ";
                     cout<<"Do you whan ask AI (y/n) ? \n";
