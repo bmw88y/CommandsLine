@@ -30,7 +30,7 @@ void ShowNetworkInterfaces()
  void PingHost() 
     {  
         cout<<"Enter the IP or Host name :";
-        cin>>this->hostname;
+        getline(cin , this->hostname); 
         this->command = "ping -c 4 " + this->hostname;  // Ping 4 times
         this->Result = system(this->command.c_str());
         if (this->Result != 0)
@@ -82,10 +82,10 @@ void ShowListeningPorts()
 void SSHConnect() 
     {
         cout<<"Enter username : ";
-        cin>>this->user;
+        getline(cin , this->user);
         cout<<"Enter the hostname : ";
-        cin>>this->hostname;
-        this->command = "gnome-terminal -- ssh " + user + "@" + hostname;
+        getline(cin , this->hostname);
+        this->command = "gnome-terminal -- ssh " + this->user + "@" + this->hostname;
         this->Result = system(this->command.c_str());
         if (this->Result != 0)
         {
@@ -98,9 +98,9 @@ void ConnectWiFi()
     {
         
         cout<<"Network name: ";
-        cin>>this->hostname;
+        getline(cin , this->hostname);
         cout<<"Password :";
-        cin>>this->user; // for password (-;
+        getline(cin , this->user); // for password (-;
         this->command = "nmcli dev wifi connect \"" + this->hostname + "\" password \"" + this->user + "\"";
         this->Result = system(this->command.c_str());
         

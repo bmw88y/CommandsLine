@@ -408,11 +408,11 @@ class Linux : private tgpt
 
             else if (this->Command == "improve")
             {
-                cout<<"Any file ?";
+                cout<<"Any file ? :";
                 system("ls");
-                cin.ignore();
+                
                 getline(cin , this->subcommand);
-                this->Command = "gnome-termainal -- nano " + this->subcommand;
+                this->Command = "gnome-terminal -- nano " + this->subcommand;
                 system(this->Command.c_str());
             }
  //! class tgpt
