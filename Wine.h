@@ -130,7 +130,7 @@ public:
         if (this->result != 0) 
         {
             cerr << "Error: Unable to show installed applications. Ensure Wine is installed and configured properly.\n";
-            InstallWineSteps();
+            /* InstallWineSteps(); */
         }
     }
 };
