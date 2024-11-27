@@ -435,7 +435,7 @@ class Linux : private tgpt
 
                 if (this->Result != 0)
                 {
-                   this->Result = TGPT(this->Command);
+                   this->Result = TGPT( this->Command );
                    if (this->Result != 0)
                    {
                     char answer;
