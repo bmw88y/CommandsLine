@@ -1,10 +1,6 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <cstdlib>
-#include <iostream>
-#include <cstdlib>
-#include<string>
 
 using namespace std;
 
