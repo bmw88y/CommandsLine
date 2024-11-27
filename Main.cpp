@@ -1,4 +1,3 @@
-#include <iostream>
 #include "LinuxGate.h"
 
 using namespace std;
