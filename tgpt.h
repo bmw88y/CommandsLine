@@ -89,7 +89,7 @@ class tgpt
 
     int TGPT(const string& Command)
     {
-        string  Header = "tgpt \"give me a answer only without anything I do not need it, Or if my command incorrect, so send to me the correct command only, ";
+        string  Header = "tgpt \"send me a command only or answer to my this question, ";
         this->COMMAND = Header + Command +"\"";
         this->Result = system(this->COMMAND.c_str());
         return this->Result;

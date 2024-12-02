@@ -49,10 +49,11 @@ class Linux : private tgpt
         }
         else
         {
-            cout<<"You're welcome to your kingdom\nType \"end\" for stop running..\n";
+            cout<<"welcome to Linux. \nType \"end\" for stop running..\n";
         }
+        this->Command = "chmod -R 777 " + file.getCurrentWorkingDirectory();
 
-        system("chmod -R 777 /home/zero/CommandsLine");
+        system(this->Command.c_str());
     }   
 
 
@@ -75,18 +76,40 @@ class Linux : private tgpt
     {
         do
         {
-           cout<<"LinuxGate:~$"<<file.getCurrentWorkingDirectory()<<"$ ";
+           cout<<"LinuxGate:~"<<file.getCurrentWorkingDirectory()<<"$ ";
           /*  cin.ignore(); */
            getline(cin , this->Command);
         /*    cin>>this->Command; */
 
         
-            if (this->Command.substr(0,2) == "cd")
+
+
+            if (this->Command.substr(0, 2) == "cd") 
             {
-                this->subcommand = this->Command.substr(3);
-                file.changeAndDisplayDirectory(this->subcommand);
+         
+                        if (this->Command.length() <= 2 || this->Command.substr(3).empty()) 
+                {
+                    cout << "To where?\n"; 
+                } 
+                else 
+                {
+                    this->subcommand = this->Command.substr(3); 
+                    file.changeAndDisplayDirectory(this->subcommand); 
+                }
             }
 
+
+
+/* 
+            if (this->Command.substr(0,2) == "cd")
+            {
+              
+                    this->subcommand = this->Command.substr(3);
+                    file.changeAndDisplayDirectory(this->subcommand);
+                
+
+            }
+ */
 
 
            /* else if (this->Command == "cd")
@@ -148,10 +171,10 @@ class Linux : private tgpt
            {
             sys.RemoveUser();
            }
-           else if (this->Command == "root")
-           {
-            sys.root();
-           }
+    else if (this->Command == "root")
+         {
+          sys.root();
+          }
 
 
 
@@ -160,7 +183,7 @@ class Linux : private tgpt
            
             else if (this->Command == "where is me")
             {
-                cout<<"you're at"<<file.getCurrentWorkingDirectory();
+                cout<<"you're at"<<file.getCurrentWorkingDirectory()<<endl;
             }
             else if (this->Command == "new d")
             {
@@ -306,11 +329,11 @@ class Linux : private tgpt
                    
                     else if (aptcommand == "end")
                     {
-
+                        cout<<endl;
                     }
                     else
                     {
-                        cerr<<"Invalid choice! Try again\n";
+                        cerr<<"Invalid choice! Try again\n\n";
                         cerr<<"or no, Type \"end\"\n";
                     }
                 }while (aptcommand != "end");
@@ -328,7 +351,7 @@ class Linux : private tgpt
 
                 {
                     cout<<"1-install or 2-remove or 3-search 4-IDsApps 5-update 6-list apps or Type \"end\" for exti\n";
-                    cout<<"LinuxGate:~$"<<file.getCurrentWorkingDirectory()<<"$ ";
+                    cout<<"LinuxGate:~"<<file.getCurrentWorkingDirectory()<<"$ ";
                     getline(cin , flatcommand);
                     if (flatcommand == "install" || flatcommand == "1")
                     {
@@ -356,7 +379,7 @@ class Linux : private tgpt
                     }
                     else if (flatcommand == "end")
                     {
-                        
+                        cout<<endl;
                     }
                     else
                     {
@@ -378,7 +401,7 @@ class Linux : private tgpt
             {
                 WINE.InstallExeUsingWine();
             }
-            else if (this->Command == "wine GUI")
+            else if (this->Command == "wine")
             {
                 WINE.WineProgManageGUI();
             }
@@ -401,32 +424,38 @@ class Linux : private tgpt
             {
                 PROTON.ConfigureProton();
             }
-            //!
-
-            else if (this->Command == "cd")
+            else if (this->Command == "i am gamer")
             {
-
-            }
-            else if (this->Command == "end")
-            {
-
+                this->subcommand ="flatpak run net.lutris.Lutris";
+                this->Result = system(this->subcommand.c_str());
+                if (this->Result != 0)
+                {
+                    system("flatpak install flathub net.lutris.Lutris");
+                    system(this->subcommand.c_str());
+                    
+                }
             }
 
             else if (this->Command == "improve")
             {
                 cout<<"Any file ? :";
                 system("ls");
-                char karrar;
+                char ide;
                 getline(cin , this->subcommand);
-                string color = "clear && echo -e \"\e[41m\"";
-                cout<<"\nAre you Karrar Haithem (y/n)?";
-                cin>>karrar;
-                system("echo -e \"\e[0m\"");
+               
+                cout<<"\nDo you want use nvim or nono (v/n)?";
+                cin>>ide;
+              
 
-                if (karrar == 'y')
+                if (ide == 'v')
                 {
-                    this->Command = "gnome-terminal -- nvim " + this-> subcommand;
-                    system(this->Command.c_str());
+                   this->Command = "gnome-terminal -- nvim " + this-> subcommand;
+                    this->Result =  system(this->Command.c_str());
+                    if (this->Result != 0)
+                    {
+                        system("flatpak install flathub io.neovim.nvim");
+                        system(this->Command.c_str());
+                    }
                 }
                 else
                 {
@@ -460,6 +489,17 @@ class Linux : private tgpt
             {
                 system("xdg-open https://www.youtube.com/@CodeSimulation");
             }
+
+             else if (this->Command == "i want to learn linux")
+            {
+                system("xdg-open https://www.geeksforgeeks.org/linux-commands-cheat-sheet/");
+            }
+
+            else if (this->Command == "end")
+            {
+
+            }
+
 
            
             else
