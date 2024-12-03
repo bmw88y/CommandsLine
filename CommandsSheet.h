@@ -53,11 +53,11 @@ void Values()
     Apt->NextCommands = Flathub;
     Flathub->CommandsSheet = "37-flathub";
     Flathub->NextCommands = Wine;
-    Wine->CommandsSheet = "38-install wine 39-run exe 40-wine GUI";
+    Wine->CommandsSheet = "38-install wine 39-run exe 40-wine ";
     Wine->NextCommands = Proton;
     Proton->CommandsSheet = "41-run steam 42-install steam 43-install proton 44-proton config";
     Proton->NextCommands = TGPT;
-    TGPT->CommandsSheet = "45-remove ai 46- i want to learn c++  -- if you want improve this program when you are running it, Type \"improve\"";
+    TGPT->CommandsSheet = "45-remove ai 46- i want to learn c++ 47-gamer 48-i want to learn linux --- if you want improve this program when you are running it, Type \"improve\"";
     TGPT->NextCommands = NULL;
 
     // Print commands

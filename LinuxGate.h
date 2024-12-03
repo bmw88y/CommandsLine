@@ -183,7 +183,7 @@ class Linux : private tgpt
            
             else if (this->Command == "where is me")
             {
-                cout<<"you're at"<<file.getCurrentWorkingDirectory()<<endl;
+                cout<<"you're at "<<file.getCurrentWorkingDirectory()<<endl;
             }
             else if (this->Command == "new d")
             {
@@ -424,8 +424,15 @@ class Linux : private tgpt
             {
                 PROTON.ConfigureProton();
             }
-            else if (this->Command == "i am gamer")
+            else if (this->Command == "gamer")
             {
+                char SL;
+                cout<<"Do you want use Steam or Lutris (s / l): "<<endl;
+                cin>>SL;
+
+                if (SL == 'l')
+                {
+
                 this->subcommand ="flatpak run net.lutris.Lutris";
                 this->Result = system(this->subcommand.c_str());
                 if (this->Result != 0)
@@ -434,6 +441,14 @@ class Linux : private tgpt
                     system(this->subcommand.c_str());
                     
                 }
+
+                }
+                else
+                {
+                    system("steam");
+                }
+
+               
             }
 
             else if (this->Command == "improve")
